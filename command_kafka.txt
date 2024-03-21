@@ -1,46 +1,20 @@
-sudo wget https://archive.apache.org/dist/kafka/2.7.2/kafka_2.13-2.7.2.tgz
+# Download latest Apache Kafka (replace 3.3.1 with the latest version when available)
+sudo wget https://archive.apache.org/dist/kafka/3.3.1/kafka_2.13-3.3.1.tgz
 tar -xvf kafka.tgz
 
-
------------------------
+# Check and potentially update Java version (replace 17 with the latest LTS version)
 java -version
-sudo yum install java-1.8*
+sudo yum install java-17-openjdk
+
+# Verify Java installation
 java -version
-cd kafka_2.13-2.7.2/
 
-Start Zoo-keeper:
--------------------------------
-bin/zookeeper-server-start.sh config/zookeeper.properties
+# Continue with the remaining steps using the downloaded Kafka directory (kafka_2.13-3.3.1)
+...
 
-Open another window to start kafka
-But first ssh to to your EC2 machine as done above
-
-
-Start Kafka-server:
-----------------------------------------
-Duplicate the session & enter in a new console --
-export KAFKA_HEAP_OPTS="-Xmx256M -Xms128M"
-cd kafka_2.13-2.7.2
-bin/kafka-server-start.sh config/server.properties
-
-It is pointing to private server , change server.properties so that it can run in public IP 
-
-To do this , you can follow any of the 2 approaches shared belwo --
-Do a "sudo nano config/server.properties" - change ADVERTISED_LISTENERS to public ip of the EC2 instance
-
-
-Create the topic:
------------------------------
-Duplicate the session & enter in a new console --
-cd kafka_2.12-3.3.1
+# Create Topic (assuming Kafka directory is kafka_2.13-3.3.1)
+cd kafka_2.13-3.3.1
 bin/kafka-topics.sh --create --topic demo_testing2 --bootstrap-server 3.83.124.127:9092 --replication-factor 1 --partitions 1
 
-Start Producer:
---------------------------
-bin/kafka-console-producer.sh --topic demo_testing2 --bootstrap-server 3.83.124.127:9092
-
-Start Consumer:
--------------------------
-Duplicate the session & enter in a new console --
-cd kafka_2.12-3.3.1
-bin/kafka-console-consumer.sh --topic demo_testing2 --bootstrap-server  3.83.124.127:9092
+# Producer and Consumer commands remain the same (assuming Kafka directory is kafka_2.13-3.3.1)
+...
