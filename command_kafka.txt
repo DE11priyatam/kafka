@@ -1,5 +1,5 @@
 sudo wget https://archive.apache.org/dist/kafka/2.7.2/kafka_2.13-2.7.2.tgz
-tar -xvf kafka_2.13-2.7.2.tgz
+tar -xvf kafka.tgz
 
 
 -----------------------
@@ -13,7 +13,7 @@ Start Zoo-keeper:
 bin/zookeeper-server-start.sh config/zookeeper.properties
 
 Open another window to start kafka
-But first ssh to to your ec2 machine as done above
+But first ssh to to your EC2 machine as done above
 
 
 Start Kafka-server:
